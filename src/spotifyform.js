@@ -2,31 +2,28 @@ import React, { useState } from 'react';
 import { Box, TextField, Button, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const SpotifyForm = () => {
     const [song, setSong] = useState('');
-    const [artist, setArtist] = useState('');
+    const [Year, setYear] = useState('');
     const navigate = useNavigate();
 
     // Mock function to simulate getting recommended songs
-    const getRecommendedSongs = (song, artist) => {
+    const getRecommendedSongs = (song, Year) => {
         // This is a placeholder. Replace with actual logic or API call.
         return [
-            { name: "Northern Attitude (With Hozier)", artist: "Noah Kahan" },
-            { name: "Stick Season", artist: "Noah Kahan" },
-            { name: "Come Over", artist: "Noah Kahan" },
-            { name: "View Between Villages", artist: "Noah Kahan" },
-            { name: "4runner", artist: "Brenn!" },
-            { name: "Eat Your Young", artist: "Hozier" },
-            { name: "Everywhere, Everything (with Grace Albrams)", artist: "Noah Kahan" },
-            // Add more mock songs as needed
+            { name: "Northern Attitude (With Hozier)", Year: "Noah Kahan" },
+            { name: "Stick Season", Year: "Noah Kahan" },
+            { name: "Come Over", Year: "Noah Kahan" },
+            { name: "View Between Villages", Year: "Noah Kahan" },
+            { name: "4runner", Year: "Brenn!" },
+            { name: "Eat Your Young", Year: "Hozier" },
+            { name: "Everywhere, Everything (with Grace Albrams)", Year: "Noah Kahan" },
         ];
     };
-    
+    //When Submit Button Pressed Redirect to RecommendedSongs.js
     const handleSubmit = (e) => {
         e.preventDefault();
-        const recommendedSongs = getRecommendedSongs(song, artist);
+        const recommendedSongs = getRecommendedSongs(song, Year);
         navigate('/recommendations', { state: { songs: recommendedSongs } });
     };
 
@@ -64,18 +61,18 @@ const SpotifyForm = () => {
                     value={song}
                     onChange={(e) => setSong(e.target.value)}
                 />
-                
+                {/*Text field for t*/}
                 <TextField
                     margin="normal"
                     required
                     fullWidth
-                    id="artist"
-                    label="Name of Artist"
+                    id="Year"
+                    label="Year"
                     variant='filled'
-                    name="artist"
-                    autoComplete="artist"
-                    value={artist}
-                    onChange={(e) => setArtist(e.target.value)}
+                    name="Year"
+                    autoComplete="Year"
+                    value={Year}
+                    onChange={(e) => setYear(e.target.value)}
                 />
                 <Button
                     type="submit"
@@ -88,10 +85,10 @@ const SpotifyForm = () => {
             </Box>
                        {/* Text box below the form */}
                        <Box sx={{ marginTop: 2, backgroundColor: 'grey', padding: 2, borderRadius: '10px' }}>
-                        <h4><p>Are you currently captivated by a particular song or artist? <br/>
+                        <h4><p>Are you currently captivated by a particular song or Year? <br/>
                 Longing to discover more tunes that resonate with the same vibe? <br/>
                 Look no further,we have you covered! <br/>
-                Simply enter your favorite song or artist, hit submit,  and let us curate a personalized playlist of similar tracks just for you. Immerse yourself in a world of music that mirrors your current obsession. Your next favorite song is just a click away!"
+                Simply enter your favorite song or Year, hit submit,  and let us curate a personalized playlist of similar tracks just for you. Immerse yourself in a world of music that mirrors your current obsession. Your next favorite song is just a click away!"
 
 
                 </p></h4>
