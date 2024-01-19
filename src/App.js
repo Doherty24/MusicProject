@@ -10,7 +10,6 @@ function App() {
   return (
     <Router>
       <Header /> {/* Header is placed here to be shown on all pages */}
-      
       <Routes>
         <Route path="/" element={<SpotifyForm />} />
         <Route path="/recommendations" element={<RecommendedSongs />} />

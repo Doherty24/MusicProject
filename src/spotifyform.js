@@ -5,7 +5,31 @@ import { useNavigate } from 'react-router-dom';
 const SpotifyForm = () => {
     const [song, setSong] = useState('');
     const [Year, setYear] = useState('');
+    const [songError,setSongError]=useState('');
+    const [yearError, setYearError]=useState('');
     const navigate = useNavigate();
+
+    const validateForm = () =>{
+        let isValid = true;
+
+        // Validate song
+        if (!song.trim()) {
+            setSongError('Song name is required');
+            isValid = false;
+        } else {
+            setSongError('');
+        }
+
+        // Validate Year
+        if (!Year.trim()) {
+            setYearError('Year is required');
+            isValid = false;
+        } else {
+            setYearError('');
+        }
+
+        return isValid;
+    }
 
     // Mock function to simulate getting recommended songs
     const getRecommendedSongs = (song, Year) => {
@@ -23,6 +47,8 @@ const SpotifyForm = () => {
     //When Submit Button Pressed Redirect to RecommendedSongs.js
     const handleSubmit = (e) => {
         e.preventDefault();
+        const isValid = validateForm();
+        if (!isValid) return;
         const recommendedSongs = getRecommendedSongs(song, Year);
         navigate('/recommendations', { state: { songs: recommendedSongs } });
     };
@@ -59,6 +85,8 @@ const SpotifyForm = () => {
                     autoComplete="song"
                     autoFocus
                     value={song}
+                    error={!!songError}
+                    helperText={songError}
                     onChange={(e) => setSong(e.target.value)}
                 />
                 {/*Text field for t*/}
@@ -72,6 +100,8 @@ const SpotifyForm = () => {
                     name="Year"
                     autoComplete="Year"
                     value={Year}
+                    error={!!yearError}
+                    helperText={yearError}
                     onChange={(e) => setYear(e.target.value)}
                 />
                 <Button
