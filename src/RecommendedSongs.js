@@ -28,6 +28,11 @@ const RecommendedSongs = () => {
                     <div style={songDetailsStyle}>
                         <p><strong>{song.title}</strong> </p>
                         <p>Artists: {song.artist}</p>
+                        {song.preview ? (
+                            <p>Track Preview: <audio controls src={song.preview} /></p>
+                        ) : (
+                            <p>No track preview available</p>
+                        )}
                     </div>
                     <div style={buttonGroupStyle}>
                     <Button 
