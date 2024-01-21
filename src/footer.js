@@ -15,7 +15,7 @@ const footerStyle = {
   color: 'white',
   textAlign: 'center',
   padding: '10px 0',
-  position: 'fixed',
+  position: 'sticky', //jack: keep this sticky or it blocks part of webpage
   left: 0,
   bottom: 0,
   width: '100%'

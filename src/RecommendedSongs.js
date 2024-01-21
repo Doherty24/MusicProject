@@ -4,10 +4,14 @@ import { useLocation } from 'react-router-dom';
 //import { Button } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
+import { Button } from '@mui/material';
+
 
 const RecommendedSongs = () => {
     const location = useLocation();
+    console.log('checking location', location.state)
     const songs = location.state?.songs || [];
+    console.log(songs)
 
     const formatDuration = (duration) => {
         const minutes = Math.floor(duration / 60000);
@@ -20,14 +24,18 @@ const RecommendedSongs = () => {
             <h1 style={{textAlign:'center'}}>Recommended Songs</h1>
             {songs.map((song, index) => (
                 <div key={index} style={songCardStyle}>
-                    <img src={song.albumArtUrl} alt={song.name} style={albumArtStyle} />
+                    <img src={song.cover} alt={song.name} style={albumArtStyle} />
                     <div style={songDetailsStyle}>
-                        <p><strong>{song.name}</strong> - {song.artist}</p>
-                        <p>Duration: {formatDuration(song.duration)}</p>
+                        <p><strong>{song.title}</strong> </p>
+                        <p>Artists: {song.artist}</p>
                     </div>
                     <div style={buttonGroupStyle}>
-                        <PlayArrowIcon style={{fontSize:'50px', marginRight:'10px'}}/>
-                        <PauseIcon style={{fontSize:'50px', marginRight:'10px'}}/>
+                    <Button 
+                        variant='contained' 
+                        onClick={() => window.open(song.trackURL, '_blank')}
+                    >
+                        <PlayArrowIcon style={{ fontSize: '50px', marginRight: '10px' }} />
+                    </Button>
                     </div>
                 </div>
             ))}
