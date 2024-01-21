@@ -69,3 +69,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # MusicProject
+
+## NPM modules need to install
+Material UI : [https://mui.com/material-ui/getting-started/installation/]
+`npm install @mui/icons-material`
+`npm install @mui/material @emotion/react @emotion/styled`
+
+## Python Modules
+`pip install numpy`
+`pip install pandas`
+`pip install plotly`
+`pip install seaborn`
+`pip install flask`
+`pip install flask_cors`
+`pip install scipy`
+`pip install scikit-learn`
+`pip install spotipy`
